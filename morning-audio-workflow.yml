@@ -1,0 +1,16 @@
+name: Morning Audio Sender
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # 5:00 UTC = 8:00 Moscow
+  workflow_dispatch:  # Позволяет запускать вручную
+
+jobs:
+  send-audio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send morning audio to Telegram
+        run: |
+          curl -X POST "https://api.telegram.org/bot7951899037:AAFNJKM3WP4FlCGyNuZX3orFUOl9UmQZf50/sendVoice" \
+            -F "chat_id=-1001243164628" \
+            -F "voice=AwACAgIAAx0EShkv1AAC0xtpJeAqeEMzNI-RHDe2CNq-W1ZB3wACRYkAAnIuMEm7NAU2un8SdjYE"
